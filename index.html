@@ -362,11 +362,11 @@ const WS = {
   subtitle: 'من المعرفة إلى التميز',
   motto: 'أقرأ بفهم.. أفكر بذكاء.. أنجح بثقة',
   tagline: 'نافس.. معًا نصنع التميز',
-  welcome: 'أهلًا بشريكات النجاح.. معًا ننطلق في رحلة معرفية نكتشف فيها كيف ندعم المتعلم ونبني مهاراته وثقته بنفسه',
+  welcome: 'أهلًا بأولياء الأمور شركاء النجاح.. معًا ننطلق في رحلة معرفية نكتشف فيها كيف ندعم المتعلم ونبني مهاراته وثقته بنفسه',
   goals: [
-    'تعريف الأمهات بالاختبارات الوطنية «نافس» وأهدافها ومجالاتها في الصف الثالث الابتدائي.',
-    'تزويد الأمهات باستراتيجيات عملية لدعم مهارات لغتي والقراءة وفهم المقروء في المنزل.',
-    'تنمية قدرة الأمهات على مساعدة المتعلم في المهارات الرياضية والمسائل اللفظية.',
+    'تعريف أولياء الأمور بالاختبارات الوطنية «نافس» وأهدافها ومجالاتها في الصف الثالث الابتدائي.',
+    'تزويد أولياء الأمور باستراتيجيات عملية لدعم مهارات لغتي والقراءة وفهم المقروء في المنزل.',
+    'تنمية قدرة أولياء الأمور على مساعدة المتعلم في المهارات الرياضية والمسائل اللفظية.',
     'بناء خطة منزلية أسبوعية منظمة تدعم التعلم المستمر.',
     'تعزيز الشراكة الفاعلة بين الأسرة والمدرسة وبناء ثقة المتعلم بنفسه.'
   ]
@@ -963,7 +963,7 @@ const Intro = (() => {
       <div class="in-cheer">«${CHEER_FAMILY[Math.floor(Math.random() * CHEER_FAMILY.length)]}»</div>
       <div class="in-school">${SCHOOL.name}</div>
     </div>
-    <div class="in-start"><div class="in-logo">ن</div><div class="in-hello">أهلًا بشريكات النجاح</div><button id="in-go">✨ اضغطي لبدء الرحلة</button><small>🔊 ارفعي صوت الجوال</small></div>
+    <div class="in-start"><div class="in-logo">ن</div><div class="in-hello">أهلًا بأولياء الأمور.. شركاء النجاح</div><button id="in-go">✨ لنبدأ الرحلة</button><small>🔊 ارفع صوت الجوال</small></div>
     <button class="in-skip" id="in-skip">تخطي ←</button>`;
     document.body.appendChild(ov);
     return ov;
@@ -1131,12 +1131,12 @@ let FLUSH = null; // حفظ ما لم يُحفظ عند مغادرة الصفح�
 function flushView() { cancelPending(); const f = FLUSH; FLUSH = null; if (f) f(); }
 VIEWS.home = () => {
   app().innerHTML = `<section class="hero"><div class="hero-card">
-    <span class="crown">✦ ورشة تدريبية تفاعلية لأمهات الصف الثالث الابتدائي ✦</span>
+    <span class="crown">✦ ورشة تدريبية تفاعلية لأولياء أمور طلبة الصف الثالث الابتدائي ✦</span>
     <h1>${WS.title}</h1><h2>${WS.subtitle}</h2>
     <div class="scene">${mascotSVG()}${bookSVG()}${kidSVG()}</div>
     <div class="motto">${WS.motto.split('..').map(s => `<span>${esc(s.trim())}</span>`).join('')}</div>
     <p class="welcome">«${WS.welcome}».</p>
-    <div class="row center" style="margin-top:22px">${REC ? `<button class="btn gold big" data-go="map">واصلي الرحلة ←</button>` : `<button class="btn gold big" data-go="register">ابدئي الرحلة ←</button><button class="btn ghost" data-go="resume" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">لديّ رقم مشاركة</button>`}</div>
+    <div class="row center" style="margin-top:22px">${REC ? `<button class="btn gold big" data-go="map">واصلي الرحلة ←</button>` : `<button class="btn gold big" data-go="register">ابدأ الرحلة ←</button><button class="btn ghost" data-go="resume" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">لديّ رقم مشاركة</button>`}</div>
     <div class="tagline">${WS.tagline}</div>
   </div></section>
   <section class="wrap" style="padding-bottom:40px">${cheerCard()}<h3 class="h3">خريطة الرحلة: ثماني محطات نحو التميز</h3>${mapHTML()}</section>`;
