@@ -1131,7 +1131,7 @@ let FLUSH = null; // حفظ ما لم يُحفظ عند مغادرة الصفح�
 function flushView() { cancelPending(); const f = FLUSH; FLUSH = null; if (f) f(); }
 VIEWS.home = () => {
   app().innerHTML = `<section class="hero"><div class="hero-card">
-    <span class="crown">✦ ورشة تدريبية تفاعلية لأولياء أمور طلبة الصف الثالث الابتدائي ✦</span>
+    <span class="crown">✦ ورشة تدريبية تفاعلية لأولياء أمور طلاب الصف الثالث الابتدائي ✦</span>
     <h1>${WS.title}</h1><h2>${WS.subtitle}</h2>
     <div class="scene">${mascotSVG()}${bookSVG()}${kidSVG()}</div>
     <div class="motto">${WS.motto.split('..').map(s => `<span>${esc(s.trim())}</span>`).join('')}</div>
