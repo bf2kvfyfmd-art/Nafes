@@ -276,6 +276,66 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 0}
 @media print{.topbar,.no-print,footer,.sky{display:none!important}body{background:#fff}.card{box-shadow:none}}
 .toast{opacity:0;pointer-events:none}.toast.on{opacity:1}
 @media(max-width:560px){.brand{font-size:.85rem;gap:6px}.brand small{display:none}.brand .logo{width:32px;height:32px}}
+
+/* ===== الحركة الافتتاحية ===== */
+#intro{position:fixed;inset:0;z-index:200;overflow:hidden;background:radial-gradient(900px 600px at 50% 40%,#173a9b 0,#0b1f55 55%,#06102e 100%);color:#fff;display:grid;place-items:center;transition:opacity .9s,transform .9s,filter .9s}
+#intro.out{opacity:0;transform:scale(1.15);filter:blur(8px);pointer-events:none}
+.in-sky i{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff;animation:tw 2.6s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}
+.in-start{position:relative;z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;transition:opacity .5s,transform .5s}
+.in-logo{width:96px;height:96px;border-radius:30px;display:grid;place-items:center;font-size:3rem;font-weight:900;background:linear-gradient(135deg,#f3d58a,#d4a64a 55%,#b7862c);color:#3b2a06;box-shadow:0 0 0 10px rgba(243,213,138,.12),0 20px 50px -10px #d4a64a;animation:bob 3s ease-in-out infinite}
+.in-hello{font-size:1.5rem;font-weight:800;color:#e0e7ff}
+#in-go{padding:16px 34px;border-radius:22px;font-size:1.25rem;font-weight:900;color:#0b1f55;background:linear-gradient(135deg,#fff,#f3d58a);box-shadow:0 0 0 0 rgba(243,213,138,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(243,213,138,.6)}70%{box-shadow:0 0 0 22px rgba(243,213,138,0)}100%{box-shadow:0 0 0 0 rgba(243,213,138,0)}}
+.in-start small{color:#99f6e4;font-weight:700}
+#intro.play .in-start{opacity:0;transform:scale(.8);pointer-events:none}
+.in-skip{position:absolute;bottom:26px;left:22px;z-index:4;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:12px;font-weight:700}
+.in-stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;opacity:0}
+#intro.play .in-stage{opacity:1}
+.in-burst{position:absolute;left:50%;top:42%;width:20px;height:20px;margin:-10px;border-radius:50%;background:radial-gradient(circle,rgba(243,213,138,.9),rgba(20,184,166,.35) 40%,transparent 70%);opacity:0}
+#intro.play .in-burst{animation:burst 2.2s .35s ease-out forwards}
+@keyframes burst{0%{opacity:0;transform:scale(1)}30%{opacity:1}100%{opacity:0;transform:scale(60)}}
+.in-book{position:relative;width:200px;height:140px;perspective:900px;transform:scale(0) rotate(-20deg);margin-bottom:26px}
+#intro.play .in-book{animation:bookin 1s .3s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes bookin{to{transform:scale(1) rotate(0)}}
+.in-page,.in-cover{position:absolute;top:0;width:100px;height:140px;border-radius:6px}
+.in-page{background:linear-gradient(#fff,#eef4ff);box-shadow:inset 0 0 0 2px #dbe5f7}
+.in-page.l{left:0;border-radius:10px 2px 2px 10px}.in-page.r{right:0;border-radius:2px 10px 10px 2px}
+.in-page:before{content:"";position:absolute;inset:22px 16px;background:repeating-linear-gradient(#cbd5e1 0 3px,transparent 3px 16px)}
+.in-cover{background:linear-gradient(135deg,#1d4ed8,#0f2a6b);box-shadow:inset 0 0 0 3px #d4a64a;backface-visibility:hidden}
+.in-cover.l{left:0;transform-origin:right center}.in-cover.r{right:0;transform-origin:left center}
+#intro.play .in-cover.l{animation:openl .9s 1s ease-in-out forwards}
+#intro.play .in-cover.r{animation:openr .9s 1s ease-in-out forwards}
+@keyframes openl{to{transform:rotateY(-160deg)}}@keyframes openr{to{transform:rotateY(160deg)}}
+.in-glow{position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px;border-radius:50%;background:#f3d58a;box-shadow:0 0 60px 30px rgba(243,213,138,.7);opacity:0}
+#intro.play .in-glow{animation:glow 2s 1.2s ease-out forwards}
+@keyframes glow{0%{opacity:0}30%{opacity:1}100%{opacity:.35}}
+.in-bits{position:absolute;left:50%;top:calc(50% - 110px);width:0;height:0}
+.in-bits span{position:absolute;font-size:30px;font-weight:900;opacity:0;text-shadow:0 0 14px currentColor}
+#intro.play .in-bits span{animation:fly 1.6s var(--d) cubic-bezier(.15,.9,.3,1) forwards}
+@keyframes fly{0%{opacity:0;transform:translate(0,0) scale(.2) rotate(0)}25%{opacity:1}100%{opacity:.85;transform:translate(var(--x),var(--y)) scale(1) rotate(25deg)}}
+.in-title{font-size:clamp(1.9rem,8.5vw,3.8rem);font-weight:900;line-height:1.35;margin-top:8px;padding:0 14px;text-align:center;text-shadow:0 6px 30px rgba(0,0,0,.4)}
+.in-title span{display:inline-block;opacity:0;color:#fff;white-space:nowrap}
+#intro.play .in-title span{animation:letter .6s ease-out forwards}
+@keyframes letter{0%{opacity:0;transform:translateY(30px) scale(.5);color:#f3d58a}60%{opacity:1;transform:translateY(-6px) scale(1.15);color:#f3d58a}100%{opacity:1;transform:none;color:#fff}}
+.in-sub,.in-motto,.in-school{opacity:0;transform:translateY(14px)}
+.in-sub{font-size:1.4rem;font-weight:800;color:#5eead4}
+.in-motto{margin-top:10px;font-weight:800;color:#f3d58a;font-size:1.1rem;padding:6px 18px;border:1px solid rgba(243,213,138,.5);border-radius:14px}
+.in-school{margin-top:14px;color:#c7d2fe;font-weight:600;font-size:.95rem}
+#intro.play .in-sub{animation:rise .7s 2.5s forwards}#intro.play .in-motto{animation:rise .7s 3s forwards}#intro.play .in-school{animation:rise .7s 3.4s forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#intro *{animation-duration:.01s!important;animation-delay:0s!important}}
+.cheer{background:linear-gradient(135deg,#fffaf0,#effcfa);border:2px solid #f3e3b5;border-radius:22px;padding:16px 18px;margin:18px 0;display:grid;gap:10px;position:relative;overflow:hidden}
+.cheer:before{content:"✦";position:absolute;left:14px;top:6px;font-size:2.6rem;color:rgba(212,166,74,.18)}
+.cheer-row{display:flex;gap:12px;align-items:flex-start}
+.cheer-ic{font-size:1.5rem;line-height:1.4}
+.cheer small{display:block;color:var(--turq2);font-weight:800;font-size:.78rem}
+.cheer b{color:var(--royal);font-size:1.05rem;line-height:1.7;display:block}
+.cheer .btn{justify-self:start}
+.cheer b.pop{animation:enter .45s}
+.in-cheer{opacity:0;transform:translateY(14px);margin-top:14px;max-width:560px;padding:0 18px;color:#fff;font-weight:700;font-size:1.05rem;line-height:1.8}
+#intro.play .in-cheer{animation:rise .7s 3.5s forwards}
+#intro.play .in-school{animation-delay:3.9s}
 </style>
 </head>
 <body>
@@ -512,6 +572,32 @@ const EVAL_OPEN = [
 ];
 const RECOMMEND = ['نعم بالتأكيد', 'نعم', 'ربما', 'لا'];
 const THANKS = 'شكرًا لكِ شريكة النجاح.. رأيكِ محل تقديرنا، ومشاركتكِ تسهم في تطوير رحلتنا نحو التميز';
+
+/* ---------- عبارات تشجيعية ---------- */
+const CHEER_FAMILY = [
+  'أنتِ المعلمة الأولى، وكل دقيقة تقضينها مع طفلك استثمار في مستقبله.',
+  'دعمكِ اليوم يصنع ثقة الغد.. استمري يا شريكة النجاح.',
+  'خطوة صغيرة كل يوم تصنع فرقًا كبيرًا في رحلة التعلم.',
+  'بيتٌ يقرأ.. طفلٌ يتميّز.',
+  'كلمة تشجيع منكِ تعادل ألف درس.',
+  'حين تؤمنين بقدراته، يؤمن هو بنفسه.',
+  'شراكتكِ مع المدرسة هي سرّ النجاح الحقيقي.',
+  'لا تبحثي عن الكمال، يكفي الاستمرار والحب.',
+  'وقتكِ مع طفلكِ أثمن هدية يمكن أن تقدّميها له.',
+  'أنتِ تزرعين اليوم بذرة حبّ التعلم، وغدًا تقطفين التميز.'
+];
+const CHEER_STUDENT = [
+  'أنت قادر على أن تتعلّم كل شيء خطوة خطوة.',
+  'أنا فخورة بمحاولتك، وليس فقط بالنتيجة.',
+  'الخطأ خطوة نحو الصواب، حاول مرة أخرى.',
+  'عقلك يكبر وينمو كلما قرأت وفكّرت.',
+  'أنت بطل القراءة في بيتنا! 📖',
+  'لا تستسلم، فكل عالِم كبير بدأ صغيرًا مثلك.',
+  'اقرأ بفهم.. فكّر بذكاء.. انجح بثقة.',
+  'أنت نجمٌ يلمع، وأنا أراك دائمًا. ⭐',
+  'أحب طريقة تفكيرك، أخبرني كيف وصلت للإجابة؟',
+  'كل يوم تتعلم شيئًا جديدًا يجعلك أقوى.'
+];
 
 /* ===== أدوات: ZIP / XLSX / PDF / رسم المستندات ===== */
 const Lib = (() => {
@@ -804,6 +890,98 @@ const Store = (() => {
   return { init, register, load, myRecord, save, adminLogin, adminAuto, adminList, get mode() { return mode; } };
 })();
 
+/* ===== الحركة الافتتاحية مع الصوت ===== */
+const Intro = (() => {
+  let ctx = null, master = null;
+  function audio() {
+    if (ctx) return ctx;
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+    ctx = new AC(); master = ctx.createGain(); master.gain.value = 0.55;
+    const comp = ctx.createDynamicsCompressor(); master.connect(comp); comp.connect(ctx.destination);
+    return ctx;
+  }
+  // جرس ناعم
+  function bell(freq, t, dur = 1.6, vol = 0.22) {
+    const o1 = ctx.createOscillator(), o2 = ctx.createOscillator(), g = ctx.createGain();
+    o1.type = 'sine'; o2.type = 'triangle'; o1.frequency.value = freq; o2.frequency.value = freq * 2.001;
+    const g2 = ctx.createGain(); g2.gain.value = 0.25;
+    o1.connect(g); o2.connect(g2); g2.connect(g); g.connect(master);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o1.start(t); o2.start(t); o1.stop(t + dur + 0.05); o2.stop(t + dur + 0.05);
+  }
+  // نفحة هواء
+  function whoosh(t, dur = 1.1) {
+    const n = ctx.sampleRate * dur, buf = ctx.createBuffer(1, n, ctx.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1);
+    const src = ctx.createBufferSource(); src.buffer = buf;
+    const f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.Q.value = 1.2;
+    f.frequency.setValueAtTime(300, t); f.frequency.exponentialRampToValueAtTime(4000, t + dur * 0.8);
+    const g = ctx.createGain(); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.35, t + dur * 0.4); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    src.connect(f); f.connect(g); g.connect(master); src.start(t); src.stop(t + dur);
+  }
+  // وسادة لحنية دافئة
+  function pad(freqs, t, dur = 3.2) {
+    freqs.forEach(fr => {
+      const o = ctx.createOscillator(), g = ctx.createGain(), lp = ctx.createBiquadFilter();
+      o.type = 'sawtooth'; o.frequency.value = fr; o.detune.value = (Math.random() - .5) * 12;
+      lp.type = 'lowpass'; lp.frequency.value = 900;
+      o.connect(lp); lp.connect(g); g.connect(master);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.05, t + 0.8); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.start(t); o.stop(t + dur + 0.1);
+    });
+  }
+  function music() {
+    if (!audio()) return; if (ctx.state === 'suspended') ctx.resume();
+    const t = ctx.currentTime + 0.05;
+    whoosh(t);
+    // صعود مبهج (سلم خماسي)
+    [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, i) => bell(f, t + 0.55 + i * 0.16, 1.8, 0.2));
+    // بريق
+    [2093, 2637, 3136, 2637, 3520].forEach((f, i) => bell(f, t + 1.5 + i * 0.09, 0.7, 0.06));
+    // لحن ختامي
+    pad([261.63, 329.63, 392.0, 523.25], t + 1.7, 3.4);
+    [783.99, 880, 1046.5].forEach((f, i) => bell(f, t + 2.4 + i * 0.28, 2.2, 0.16));
+    bell(1567.98, t + 3.4, 2.6, 0.12);
+  }
+
+  function build() {
+    const ov = document.createElement('div'); ov.id = 'intro';
+    const bits = ['أ', 'ب', 'ت', 'ق', '٣', '٧', '+', '×', '★', '٥', 'ن', '★', 'ف', '٢', '÷', '★', 'س', '٩'];
+    ov.innerHTML = `
+    <div class="in-sky">${Array.from({ length: 40 }, (_, i) => `<i style="left:${(i * 37) % 100}%;top:${(i * 53) % 100}%;animation-delay:${(i % 10) * .3}s;transform:scale(${.5 + (i % 4) * .3})"></i>`).join('')}</div>
+    <div class="in-burst"></div>
+    <div class="in-stage">
+      <div class="in-book">
+        <div class="in-page l"></div><div class="in-page r"></div>
+        <div class="in-cover l"></div><div class="in-cover r"></div>
+        <div class="in-glow"></div>
+      </div>
+      <div class="in-bits">${bits.map((b, i) => { const a = (i / bits.length) * Math.PI * 2, r = 150 + (i % 3) * 55; return `<span style="--x:${Math.cos(a) * r}px;--y:${Math.sin(a) * r * .75 - 40}px;--d:${1.05 + (i % 6) * .05}s;color:${['#f3d58a', '#5eead4', '#fff', '#93c5fd'][i % 4]}">${b}</span>`; }).join('')}</div>
+      <h1 class="in-title">${WS.title.split(' ').map((w, i) => `<span style="animation-delay:${1.6 + i * .22}s">${w}</span>`).join(' ')}</h1>
+      <div class="in-sub">${WS.subtitle}</div>
+      <div class="in-motto">${WS.motto}</div>
+      <div class="in-cheer">«${CHEER_FAMILY[Math.floor(Math.random() * CHEER_FAMILY.length)]}»</div>
+      <div class="in-school">${SCHOOL.name}</div>
+    </div>
+    <div class="in-start"><div class="in-logo">ن</div><div class="in-hello">أهلًا بشريكات النجاح</div><button id="in-go">✨ اضغطي لبدء الرحلة</button><small>🔊 ارفعي صوت الجوال</small></div>
+    <button class="in-skip" id="in-skip">تخطي ←</button>`;
+    document.body.appendChild(ov);
+    return ov;
+  }
+  function close(ov) { ov.classList.add('out'); setTimeout(() => ov.remove(), 900); }
+  function show() {
+    if (location.hash === '#admin') return;
+    const ov = build();
+    const go = () => {
+      ov.classList.add('play'); try { music(); } catch (e) { console.warn(e); }
+      clearTimeout(ov._t); ov._t = setTimeout(() => close(ov), 6200);
+    };
+    document.getElementById('in-go').onclick = go;
+    document.getElementById('in-skip').onclick = () => { try { if (ctx) master.gain.setTargetAtTime(0, ctx.currentTime, .1); } catch { } close(ov); };
+  }
+  return { show };
+})();
+
 /* ===== تطبيق الورشة ===== */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -862,6 +1040,12 @@ function unlocked(key) {
   if (key === 'cert') return isDone('evaluation');
   return false;
 }
+
+const pick = a => a[Math.floor(Math.random() * a.length)];
+function cheerCard() {
+  return `<div class="cheer" id="cheer"><div class="cheer-row"><span class="cheer-ic">💛</span><div><small>رسالة لكِ يا شريكة النجاح</small><b id="cf">${esc(pick(CHEER_FAMILY))}</b></div></div><div class="cheer-row"><span class="cheer-ic">🌟</span><div><small>قوليها اليوم لطفلك</small><b id="cs">«${esc(pick(CHEER_STUDENT))}»</b></div></div><button class="btn ghost sm" id="cheerNext">✨ عبارة أخرى</button></div>`;
+}
+function bindCheer() { const b = $('#cheerNext'); if (!b) return; b.onclick = () => { const f = $('#cf'), st = $('#cs'); [f, st].forEach(e => e.classList.remove('pop')); void f.offsetWidth; f.textContent = pick(CHEER_FAMILY); st.textContent = '«' + pick(CHEER_STUDENT) + '»'; [f, st].forEach(e => e.classList.add('pop')); }; }
 
 /* ---------- رسوم ---------- */
 function mascotSVG() {
@@ -955,8 +1139,8 @@ VIEWS.home = () => {
     <div class="row center" style="margin-top:22px">${REC ? `<button class="btn gold big" data-go="map">واصلي الرحلة ←</button>` : `<button class="btn gold big" data-go="register">ابدئي الرحلة ←</button><button class="btn ghost" data-go="resume" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">لديّ رقم مشاركة</button>`}</div>
     <div class="tagline">${WS.tagline}</div>
   </div></section>
-  <section class="wrap" style="padding-bottom:40px"><h3 class="h3">خريطة الرحلة: ثماني محطات نحو التميز</h3>${mapHTML()}</section>`;
-  bindMap();
+  <section class="wrap" style="padding-bottom:40px">${cheerCard()}<h3 class="h3">خريطة الرحلة: ثماني محطات نحو التميز</h3>${mapHTML()}</section>`;
+  bindMap(); bindCheer();
 };
 function mapHTML() {
   const st = s => { const key = s.key; const done = isDone(key), open = unlocked(key); return `<div class="node ${done ? 'done' : open ? 'open' : 'locked'}" data-node="${key}"><span class="num">${s.n}</span><div class="ic" style="background:linear-gradient(135deg,${s.color},${s.color}bb);color:${s.color}"><span style="color:#fff">${s.icon}</span></div><b>${esc(s.title)}</b><small>${done ? 'مكتملة' : open ? 'متاحة الآن' : '🔒 مقفلة'}</small></div>`; };
@@ -984,8 +1168,9 @@ VIEWS.map = () => {
     <div style="margin-top:6px">رقم المشاركة: <b style="color:var(--gold2);direction:ltr;display:inline-block">${esc(REC.code)}</b></div></div>
     <div style="text-align:center"><div style="font-size:2.6rem;font-weight:900;color:var(--gold2)">${p}%</div><div>نسبة الإنجاز</div></div>
   </div>
+  ${cheerCard()}
   <h3 class="h3">خريطة الرحلة</h3>${mapHTML()}</section>`;
-  bindMap();
+  bindMap(); bindCheer();
 };
 
 /* ---------- التسجيل ---------- */
@@ -1084,7 +1269,7 @@ VIEWS.post = () => runTest('post', POST_TEST, 'الاختبار البعدي', '
 /* ---------- إنهاء محطة ---------- */
 async function finishStation(key, payload, nextKey) {
   const ok = await saveSection(key, Object.assign({}, payload, { done: true }));
-  if (ok) { confetti(); const nxt = nextKey && unlocked(nextKey); app().insertAdjacentHTML('beforeend', `<div class="overlay" id="ov"><div class="modal" style="max-width:480px;text-align:center"><div style="font-size:3rem">🏅</div><h2 style="color:var(--royal)">أحسنتِ! أنجزتِ المحطة</h2><p class="muted">حُفظت استجاباتك في قاعدة البيانات بنجاح.</p><div class="row center" style="margin-top:14px">${nxt ? `<button class="btn gold" data-go="${nextKey}">المحطة التالية ←</button>` : ''}<button class="btn ghost" data-go="map">خريطة الرحلة</button></div></div></div>`); $('#ov').onclick = e => { if (e.target.id === 'ov' || e.target.closest('[data-go]')) $('#ov').remove(); }; }
+  if (ok) { confetti(); const nxt = nextKey && unlocked(nextKey); app().insertAdjacentHTML('beforeend', `<div class="overlay" id="ov"><div class="modal" style="max-width:480px;text-align:center"><div style="font-size:3rem">🏅</div><h2 style="color:var(--royal)">أحسنتِ! أنجزتِ المحطة</h2><p class="muted">حُفظت استجاباتك في قاعدة البيانات بنجاح.</p><div class="cheer" style="margin:12px 0 0"><div class="cheer-row"><span class="cheer-ic">💛</span><b>${esc(pick(CHEER_FAMILY))}</b></div><div class="cheer-row"><span class="cheer-ic">🌟</span><div><small>قوليها لطفلك</small><b>«${esc(pick(CHEER_STUDENT))}»</b></div></div></div><div class="row center" style="margin-top:14px">${nxt ? `<button class="btn gold" data-go="${nextKey}">المحطة التالية ←</button>` : ''}<button class="btn ghost" data-go="map">خريطة الرحلة</button></div></div></div>`); $('#ov').onclick = e => { if (e.target.id === 'ov' || e.target.closest('[data-go]')) $('#ov').remove(); }; }
 }
 
 /* ---------- المحطة ١ ---------- */
@@ -1258,6 +1443,7 @@ VIEWS.charter = () => {
   ${CHARTER.map((c, i) => `<label class="pledge ${pl[i] ? 'on' : ''}"><input type="checkbox" data-p="${i}" ${pl[i] ? 'checked' : ''}><span>${i + 1}. ${esc(c)}</span></label>`).join('')}
   <div class="field" style="margin-top:14px"><label>التوقيع (اسم الأم)</label><input id="sig" value="${esc(prev.signature || REC.mother_name)}"></div></div>
   <h3 class="h3">رسالة تحفيزية مني إلى ${esc(REC.student_name)} 💌</h3>
+  <p class="muted" style="margin-bottom:6px">اختاري عبارة تشجيعية لإضافتها، أو اكتبي بأسلوبك:</p><div class="chips" id="sugg" style="margin-bottom:10px">${CHEER_STUDENT.slice(0, 6).map(t => `<button type="button" class="chip" style="font-size:.85rem;padding:6px 12px">${esc(t)}</button>`).join('')}</div>
   <div class="field"><textarea id="msg" rows="5" placeholder="اكتبي رسالة حب وتشجيع… (تُحفظ تلقائيًا)">${esc(prev.message || '')}</textarea></div><div class="saved" id="ind"></div>
   <div class="row"><button class="btn gold" id="seal">اعتماد الميثاق</button>${backBtn()}</div><div class="err" id="cerr"></div></section>`;
   const collect = () => ({ done: isDone('charter'), pledges: $$('.pledge input').map(i => i.checked), signature: $('#sig').value.trim(), message: $('#msg').value.trim() });
@@ -1265,6 +1451,7 @@ VIEWS.charter = () => {
   let cdirty = false; const csave = () => { if (!$('#msg')) return; cdirty = false; saveSection('charter', collect(), { silent: true, indicator: $('#ind') }); };
   const autosave0 = debounce(csave, 1400); const autosave = () => { cdirty = true; autosave0(); };
   FLUSH = () => { if (cdirty) csave(); };
+  $$('#sugg .chip').forEach(c => c.onclick = () => { const m = $('#msg'); m.value = (m.value.trim() ? m.value.trim() + ' ' : '') + c.textContent; autosave(); c.classList.add('sel'); });
   $('#msg').addEventListener('input', autosave); $('#sig').addEventListener('input', autosave); $$('.pledge input').forEach(i => i.addEventListener('change', autosave));
   $('#seal').onclick = () => { const c = collect(); if (c.pledges.some(p => !p)) return $('#cerr').textContent = 'ضعي علامة على جميع بنود الميثاق لاعتماده.'; if (!c.signature) return $('#cerr').textContent = 'اكتبي اسمك للتوقيع.'; $('#cerr').textContent = ''; cancelPending(); cdirty = false; finishStation('charter', c, 'post'); };
 };
@@ -1313,8 +1500,9 @@ VIEWS.evaluation = () => {
   };
 };
 function evalThanks() {
-  app().innerHTML = `<section class="section wrap" style="max-width:760px"><div class="thanks"><div style="font-size:3rem">💐</div>«${THANKS}».<div style="margin-top:10px;font-size:.95rem;color:#99f6e4">✓ حُفظ تقييمكِ كاملًا في قاعدة البيانات</div></div>
+  app().innerHTML = `<section class="section wrap" style="max-width:760px"><div class="thanks"><div style="font-size:3rem">💐</div>«${THANKS}».<div style="margin-top:10px;font-size:.95rem;color:#99f6e4">✓ حُفظ تقييمكِ كاملًا في قاعدة البيانات</div></div>${cheerCard()}
   <div class="row center" style="margin-top:20px"><button class="btn gold big" data-go="cert">🎓 استلمي شهادة شريكة النجاح</button>${backBtn()}</div></section>`;
+  bindCheer();
 }
 
 /* ---------- الشهادة ---------- */
@@ -1385,6 +1573,7 @@ VIEWS.cert = async () => {
 /* ---------- الإقلاع ---------- */
 async function boot() {
   $('#floaters').innerHTML = floaters();
+  try { Intro.show(); } catch (e) { console.warn(e); }
   app().innerHTML = '<div class="wrap section" style="text-align:center"><div class="spinner"></div><p class="muted">جارٍ الاتصال بقاعدة البيانات…</p></div>';
   const mode = await Store.init();
   $('#dbmode').textContent = mode === 'supabase' ? 'متصلة بقاعدة بيانات Supabase' : mode === 'claude' ? 'متصلة بقاعدة البيانات' : 'قاعدة البيانات غير متصلة';
